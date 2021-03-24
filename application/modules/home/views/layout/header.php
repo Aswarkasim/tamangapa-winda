@@ -39,6 +39,26 @@ $uri = $this->uri->segment('2');
         <li class="nav-item <?php if ($this->uri->segment('2') == 'visimisi') {
                               echo "active";
                             } ?>"><a class="nav-link" href="<?= base_url('home/visimisi'); ?>"><strong> Visi & Misi</strong></a></li>
+
+        <li class="dropdown nav-item show">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
+            <strong> Layanan</strong>
+            <div class="ripple-container"></div>
+          </a>
+          <div class="dropdown-menu dropdown-with-icons">
+            <a href="<?= base_url('home/layanan/ktp') ?>" class="dropdown-item">
+              Surat Pengantar KTP
+            </a>
+            <a href="<?= base_url('home/layanan/ak') ?>" class="dropdown-item">
+              Surat Pengantar Akta Kelahiran </a>
+
+            <a href="<?= base_url('home/layanan/kk') ?>" class="dropdown-item">
+              Surat Pengantar KK </a>
+            <a href="<?= base_url('home/layanan/sktm') ?>" class="dropdown-item">
+              Surat Keterangan Tidak Mampu </a>
+          </div>
+        </li>
+
         <li class="nav-item <?php if ($this->uri->segment('2') == 'saran') {
                               echo "active";
                             } ?>"><a class="nav-link" href="<?= base_url('home/saran'); ?>"><strong> Hubungi Kami</strong></a></li>

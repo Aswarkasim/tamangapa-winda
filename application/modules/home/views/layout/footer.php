@@ -46,6 +46,8 @@
   <!--  Google Maps Plugin    -->
   <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
   <script src="<?= base_url('assets/home/') ?>assets/js/material-kit.js?v=2.0.7" type="text/javascript"></script>
+  <script src="<?= base_url('assets/') ?>js/sweetalert2.all.min.js"></script>
+  <script src="<?= base_url('assets/') ?>js/mySwal.js"></script>
   <script>
     $(document).ready(function() {
       //init DateTimePickers
