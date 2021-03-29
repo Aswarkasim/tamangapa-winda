@@ -25,6 +25,16 @@ $saran = $this->Crud_model->listingOneAll('tbl_saran', 'is_read', '0');
             <li class="<?php if ($this->uri->segment(2) == "saran") {
                             echo "active";
                         }
+                        ?>"><a href="<?php echo base_url('admin/layanan')
+                                        ?>"><i class="fa fa-file"></i> <span>Layanan Persuratan</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-blue"><?= count($saran) ?></small>
+                    </span>
+                </a></li>
+
+            <li class="<?php if ($this->uri->segment(2) == "saran") {
+                            echo "active";
+                        }
                         ?>"><a href="<?php echo base_url('admin/saran')
                                         ?>"><i class="fa fa-ticket"></i> <span>Saran</span>
                     <span class="pull-right-container">
