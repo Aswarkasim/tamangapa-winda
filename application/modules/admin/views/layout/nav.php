@@ -22,6 +22,14 @@ $saran = $this->Crud_model->listingOneAll('tbl_saran', 'is_read', '0');
                         ?>"><a href="<?php echo base_url('admin/dashboard')
                                         ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 
+            <li class="<?php if ($this->uri->segment(2) == "penduduk") {
+                            echo "active";
+                        }
+                        ?>"><a href="<?php echo base_url('admin/penduduk')
+                                        ?>"><i class="fa fa-users"></i> <span>Penduduk</span>
+                </a></li>
+
+
             <li class="<?php if ($this->uri->segment(2) == "saran") {
                             echo "active";
                         }
@@ -30,6 +38,14 @@ $saran = $this->Crud_model->listingOneAll('tbl_saran', 'is_read', '0');
                     <span class="pull-right-container">
                         <small class="label pull-right bg-blue"><?= count($saran) ?></small>
                     </span>
+                </a></li>
+
+
+            <li class="<?php if ($this->uri->segment(2) == "posyandu") {
+                            echo "active";
+                        }
+                        ?>"><a href="<?php echo base_url('admin/posyandu')
+                                        ?>"><i class="fa fa-home"></i> <span>Posyandu</span>
                 </a></li>
 
             <li class="<?php if ($this->uri->segment(2) == "saran") {

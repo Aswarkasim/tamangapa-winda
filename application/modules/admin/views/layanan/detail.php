@@ -5,7 +5,11 @@
       <div class="user-block">
         <!-- <img class="img-circle" src="<?= base_url($layanan->gambar) ?>" alt="User Image"> -->
         <a href="<?= base_url('admin/layanan') ?>" class="btn btn-success"><i class="fa fa-arrow-left"></i> List Berita</a>
-        <a href="<?= base_url('admin/layanan/edit/' . $layanan->id_layanan) ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+        <!-- <a href="<?= base_url('admin/layanan/edit/' . $layanan->id_layanan) ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a> -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalEdit<?= $layanan->id_layanan ?>">
+          <i class="fa fa-edit"></i>Edit
+        </button>
+        <?php include('edit.php') ?>
         <a href="<?= base_url('admin/layanan/cetak/' . $layanan->id_layanan) ?>" class="btn btn-warning" target="blank"><i class="fa fa-print"></i> Cetak</a>
         <span>
           <br>
@@ -21,6 +25,10 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
+      <tr>
+        <td><b>Nomor Surat</b></td>
+        <td>: <b><?= $layanan->no_surat; ?></b></td>
+      </tr>
 
       <?php
       switch ($layanan->type) {

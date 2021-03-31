@@ -6,6 +6,15 @@ class Admin_model extends CI_Model
 {
 
 
+  public function listLayanan()
+  {
+    $query = $this->db->select('*')
+      ->from('tbl_layanan')
+      ->order_by('date_created', 'ASC')
+      ->get();
+    return $query->result();
+  }
+
   function listBerita()
   {
     $this->db->select('tbl_berita.*,
@@ -66,12 +75,11 @@ class Admin_model extends CI_Model
 
   function listSaran()
   {
-    $this->db->select('tbl_saran.*,
-                            tbl_user.namalengkap')
+    $query = $this->db->select('*')
       ->from('tbl_saran')
-      ->join('tbl_user', 'tbl_user.id_user = tbl_saran.id_user', 'LEFT')
-      ->order_by('tbl_saran.date_created', 'DESC');
-    return $this->db->get()->result();
+      ->order_by('date_created', 'ASC')
+      ->get();
+    return $query->result();
   }
 
   function detailSaran($id_saran)
@@ -84,5 +92,3 @@ class Admin_model extends CI_Model
     return $this->db->get()->row();
   }
 }
-
-/* End of file ModelName.php */
