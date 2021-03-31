@@ -1,5 +1,5 @@
 <div class="col-md-12 text-center mt-5">
-  <h2>Berita<br></h2>
+  <h2>Posyandu<br></h2>
 </div>
 
 <div class="container">
@@ -15,7 +15,7 @@
             <div class="col-md-4">
               <div class="card">
                 <div class="card-body">
-                  <a href=""><b><?= format_indo($row->jadwal) ?></b></a>
+                  <a href="<?= base_url('home/posyandu/detail/' . $row->id_posyandu) ?>"><b><?= format_indo($row->jadwal) ?></b></a>
                 </div>
               </div>
             </div>
