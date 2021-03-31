@@ -40,6 +40,11 @@ $uri = $this->uri->segment('2');
                               echo "active";
                             } ?>"><a class="nav-link" href="<?= base_url('home/visimisi'); ?>"><strong> Visi & Misi</strong></a></li>
 
+        <li class="nav-item <?php if ($this->uri->segment('2') == 'posyandu') {
+                              echo "active";
+                            } ?>"><a class="nav-link" href="<?= base_url('home/posyandu'); ?>"><strong> Posyandu</strong></a></li>
+
+
         <li class="dropdown nav-item show">
           <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
             <strong> Layanan</strong>
