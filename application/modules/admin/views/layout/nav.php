@@ -113,9 +113,9 @@ $saran = $this->Crud_model->listingOneAll('tbl_saran', 'is_read', '0');
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="<?php if ($this->uri->segment(2) == "user") {
-                                    echo "active";
-                                } ?>"><a href="<?= base_url('admin/user') ?>">User</a></li>
+                    <!-- <li class="<?php if ($this->uri->segment(2) == "user") {
+                                        echo "active";
+                                    } ?>"><a href="<?= base_url('admin/user') ?>">User</a></li> -->
                     <li class="<?php if ($this->uri->segment(2) == "admin") {
                                     echo "active";
                                 } ?>"><a href="<?= base_url('admin/admin') ?>">Admin</a></li>
