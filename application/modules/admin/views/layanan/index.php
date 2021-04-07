@@ -7,7 +7,8 @@
   <div class="box-body">
 
     <p>
-      <a href="<?= base_url($add) ?>" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+      <?php include('add.php') ?>
+      <!-- <a href="<?= base_url($add) ?>" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah</a> -->
     </p>
 
     <table class="table DataTable">
@@ -36,7 +37,7 @@
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="<?= base_url($edit . $row->id_layanan)  ?>"><i class="fa fa-edit"></i> Edit</a></li>
+                  <!-- <li><a href="<?= base_url($edit . $row->id_layanan)  ?>"><i class="fa fa-edit"></i> Edit</a></li> -->
                   <li><a class="tombol-hapus" href="<?= base_url($delete . $row->id_layanan)  ?>"><i class="fa fa-trash"></i> Hapus</a></li>
                 </ul>
               </div>

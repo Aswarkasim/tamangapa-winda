@@ -12,6 +12,8 @@ class Layanan extends CI_Controller
     // is_logged_in_admin();
 
     $this->load->model('admin/Admin_model', 'AM');
+
+    $this->load->helper('string');
   }
 
 
@@ -71,114 +73,190 @@ class Layanan extends CI_Controller
     $this->load->view('admin/layanan/cetak', $data, FALSE);
   }
 
-  function ktp($id_layanan)
+  function ktp($id_layanan = null)
   {
 
+    $id = '';
+    if ($id_layanan == null) {
+      $id = random_string();
+    } else {
+      $id = $id_layanan;
+    }
 
-
+    // print_r($id_layanan);
+    // die;
 
     $i = $this->input;
     $data = [
-      'id_layanan'    => $id_layanan,
-      'no_surat'   => $i->post('no_surat'),
-      'namalengkap'   => $i->post('namalengkap'),
-      'tempat_lahir'   => $i->post('tempat_lahir'),
-      'tanggal_lahir'   => $i->post('tanggal_lahir'),
-      'pekerjaan'   => $i->post('pekerjaan'),
-      'jenis_kelamin'   => $i->post('jenis_kelamin'),
-      'agama'   => $i->post('agama'),
-      'status_perkawinan'   => $i->post('status_perkawinan'),
+      'id_layanan'        => $id,
+      'no_surat'          => $i->post('no_surat'),
+      'namalengkap'       => $i->post('namalengkap'),
+      'tempat_lahir'      => $i->post('tempat_lahir'),
+      'tanggal_lahir'     => $i->post('tanggal_lahir'),
+      'pekerjaan'         => $i->post('pekerjaan'),
+      'jenis_kelamin'     => $i->post('jenis_kelamin'),
+      'agama'             => $i->post('agama'),
+      'status_perkawinan' => $i->post('status_perkawinan'),
       'kewarganegaraan'   => $i->post('kewarganegaraan'),
-      'alamat'   => $i->post('alamat'),
-      'type'    => 'KTP'
+      'alamat'            => $i->post('alamat'),
+      'type'              => 'KTP'
     ];
-    $this->Crud_model->edit('tbl_layanan', 'id_layanan', $id_layanan, $data);
+
+
+    if ($id_layanan == null) {
+      $this->Crud_model->add('tbl_layanan', $data);
+    } else {
+      $this->Crud_model->edit('tbl_layanan', 'id_layanan', $id_layanan, $data);
+    }
+
     $this->session->set_flashdata('msg', 'Data berhasil dikirim. Silakan ke kantor desa untuk mengambil surat');
-    redirect('admin/layanan/detail/' . $id_layanan);
+    redirect('admin/layanan/detail/' . $data['id_layanan']);
   }
 
-  function kk($id_layanan)
+  function kk($id_layanan = null)
   {
 
-    $this->load->helper('string');
+    $id = '';
+    if ($id_layanan == null) {
+      $id = random_string();
+    } else {
+      $id = $id_layanan;
+    }
 
 
     $i = $this->input;
     $data = [
-      'id_layanan'    => $id_layanan,
-      'no_surat'   => $i->post('no_surat'),
-      'namalengkap'   => $i->post('namalengkap'),
-      'tempat_lahir'   => $i->post('tempat_lahir'),
-      'tanggal_lahir'   => $i->post('tanggal_lahir'),
-      'pekerjaan'   => $i->post('pekerjaan'),
-      'jenis_kelamin'   => $i->post('jenis_kelamin'),
-      'agama'   => $i->post('agama'),
+      'id_layanan'          => $id,
+      'no_surat'            => $i->post('no_surat'),
+      'namalengkap'         => $i->post('namalengkap'),
+      'tempat_lahir'        => $i->post('tempat_lahir'),
+      'tanggal_lahir'       => $i->post('tanggal_lahir'),
+      'pekerjaan'           => $i->post('pekerjaan'),
+      'jenis_kelamin'       => $i->post('jenis_kelamin'),
+      'agama'               => $i->post('agama'),
       'status_perkawinan'   => $i->post('status_perkawinan'),
-      'kewarganegaraan'   => $i->post('kewarganegaraan'),
-      'alamat'   => $i->post('alamat'),
-      'type'    => 'KK'
+      'kewarganegaraan'     => $i->post('kewarganegaraan'),
+      'alamat'              => $i->post('alamat'),
+      'type'                => 'KK'
     ];
-    $this->Crud_model->edit('tbl_layanan', 'id_layanan', $id_layanan, $data);
+    if ($id_layanan == null) {
+      $this->Crud_model->add('tbl_layanan', $data);
+    } else {
+      $this->Crud_model->edit('tbl_layanan', 'id_layanan', $id_layanan, $data);
+    }
     $this->session->set_flashdata('msg', 'Data berhasil dikirim. Silakan ke kantor desa untuk mengambil surat');
-    redirect('admin/layanan/detail/' . $id_layanan);
+    redirect('admin/layanan/detail/' . $data['id_layanan']);
   }
 
 
-  function ak($id_layanan)
+  function ak($id_layanan = null)
   {
+    $id = '';
+    if ($id_layanan == null) {
+      $id = random_string();
+    } else {
+      $id = $id_layanan;
+    }
 
 
     $i = $this->input;
     $data = [
-      'id_layanan'    => $id_layanan,
-      'no_surat'   => $i->post('no_surat'),
-      'namalengkap'   => $i->post('namalengkap'),
-      'tempat_lahir'   => $i->post('tempat_lahir'),
+      'id_layanan'      => $id,
+      'no_surat'        => $i->post('no_surat'),
+      'namalengkap'     => $i->post('namalengkap'),
+      'tempat_lahir'    => $i->post('tempat_lahir'),
       'tanggal_lahir'   => $i->post('tanggal_lahir'),
-      'pekerjaan'   => $i->post('pekerjaan'),
+      'pekerjaan'       => $i->post('pekerjaan'),
       'jenis_kelamin'   => $i->post('jenis_kelamin'),
-      'anak_ke'   => $i->post('anak_ke'),
-      'nama_ayah'   => $i->post('nama_ayah'),
-      'nama_ibu'   => $i->post('nama_ibu'),
-      'alamat'   => $i->post('alamat'),
-      'type'    => 'AK'
+      'anak_ke'         => $i->post('anak_ke'),
+      'nama_ayah'       => $i->post('nama_ayah'),
+      'nama_ibu'        => $i->post('nama_ibu'),
+      'alamat'          => $i->post('alamat'),
+      'type'            => 'AK'
     ];
-    $this->Crud_model->edit('tbl_layanan', 'id_layanan', $id_layanan, $data);
+    if ($id_layanan == null) {
+      $this->Crud_model->add('tbl_layanan', $data);
+    } else {
+      $this->Crud_model->edit('tbl_layanan', 'id_layanan', $id_layanan, $data);
+    }
+
     $this->session->set_flashdata('msg', 'Data berhasil dikirim. Silakan ke kantor desa untuk mengambil surat');
-    redirect('admin/layanan/detail/' . $id_layanan);
+    redirect('admin/layanan/detail/' . $data['id_layanan']);
   }
 
-  function sktm($id_layanan)
+  function sktm($id_layanan = null)
   {
 
-    $this->load->helper('string');
+    $id = '';
+    if ($id_layanan == null) {
+      $id = random_string();
+    } else {
+      $id = $id_layanan;
+    }
 
 
     $i = $this->input;
     $data = [
-      'id_layanan'    => $id_layanan,
-      'no_surat'   => $i->post('no_surat'),
-      'namalengkap'   => $i->post('namalengkap'),
-      'tempat_lahir'   => $i->post('tempat_lahir'),
+      'id_layanan'      => $id,
+      'no_surat'        => $i->post('no_surat'),
+      'namalengkap'     => $i->post('namalengkap'),
+      'tempat_lahir'    => $i->post('tempat_lahir'),
       'tanggal_lahir'   => $i->post('tanggal_lahir'),
-      'pekerjaan'   => $i->post('pekerjaan'),
+      'pekerjaan'       => $i->post('pekerjaan'),
       'jenis_kelamin'   => $i->post('jenis_kelamin'),
-      'alamat'   => $i->post('alamat'),
+      'alamat'          => $i->post('alamat'),
 
-      'nama_ayah'   => $i->post('nama_ayah'),
-      'umur_ayah'   => $i->post('umur_ayah'),
-      'pekerjaan_ayah'   => $i->post('pekerjaan_ayah'),
-      'alamat_ayah'   => $i->post('alamat_ayah'),
+      'nama_ayah'       => $i->post('nama_ayah'),
+      'umur_ayah'       => $i->post('umur_ayah'),
+      'pekerjaan_ayah'  => $i->post('pekerjaan_ayah'),
+      'alamat_ayah'     => $i->post('alamat_ayah'),
 
-      'nama_ibu'   => $i->post('nama_ibu'),
-      'umur_ibu'   => $i->post('umur_ibu'),
+      'nama_ibu'        => $i->post('nama_ibu'),
+      'umur_ibu'        => $i->post('umur_ibu'),
       'pekerjaan_ibu'   => $i->post('pekerjaan_ibu'),
-      'alamat_ibu'   => $i->post('alamat_ibu'),
+      'alamat_ibu'      => $i->post('alamat_ibu'),
 
-      'type'    => 'SKTM'
+      'type'            => 'SKTM'
     ];
-    $this->Crud_model->edit('tbl_layanan', 'id_layanan', $id_layanan, $data);
+
+    if ($id_layanan == null) {
+      $this->Crud_model->add('tbl_layanan', $data);
+    } else {
+      $this->Crud_model->edit('tbl_layanan', 'id_layanan', $id_layanan, $data);
+    }
     $this->session->set_flashdata('msg', 'Data berhasil dikirim. Silakan ke kantor desa untuk mengambil surat');
-    redirect('admin/layanan/detail/' . $id_layanan);
+    redirect('admin/layanan/detail/' . $data['id_layanan']);
+  }
+
+  function add()
+  {
+
+
+    $type = $this->input->post('surat');
+
+    $add = '';
+    switch ($type) {
+      case "AK":
+        $add = 'admin/layanan/ak';
+        break;
+      case "KTP":
+        $add = 'admin/layanan/ktp';
+        break;
+      case "KK":
+        $add = 'admin/layanan/kk';
+        break;
+      case "SKTM":
+        $add = 'admin/layanan/sktm';
+        break;
+    }
+
+    $data = [
+      'title'     => 'Tambah Admin',
+      'type'      => $type,
+      'add'       => $add,
+      'back'      => 'admin/admin',
+      'content'   => 'admin/layanan/add/add'
+    ];
+    $this->load->view('admin/layout/wrapper', $data, FALSE);
   }
 }
