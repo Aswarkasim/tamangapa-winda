@@ -4,6 +4,7 @@ $id_user = $this->session->userdata('id_user');
 $role = $this->session->userdata('role');
 
 $saran = $this->Crud_model->listingOneAll('tbl_saran', 'is_read', '0');
+$layanan = $this->Crud_model->listingOneAll('tbl_layanan', 'is_read', '0');
 
 ?>
 
@@ -30,13 +31,13 @@ $saran = $this->Crud_model->listingOneAll('tbl_saran', 'is_read', '0');
                 </a></li>
 
 
-            <li class="<?php if ($this->uri->segment(2) == "saran") {
+            <li class="<?php if ($this->uri->segment(2) == "layanan") {
                             echo "active";
                         }
                         ?>"><a href="<?php echo base_url('admin/layanan')
                                         ?>"><i class="fa fa-file"></i> <span>Layanan Persuratan</span>
                     <span class="pull-right-container">
-                        <small class="label pull-right bg-blue"><?= count($saran) ?></small>
+                        <small class="label pull-right bg-blue"><?= count($layanan) ?></small>
                     </span>
                 </a></li>
 

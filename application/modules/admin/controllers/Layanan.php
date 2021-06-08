@@ -21,6 +21,7 @@ class Layanan extends CI_Controller
   {
 
     $layanan = $this->AM->listLayanan();
+
     $data = [
 
       'layanan' => $layanan,
@@ -35,6 +36,7 @@ class Layanan extends CI_Controller
 
   public function detail($id_layanan)
   {
+    is_read('tbl_layanan', 'id_layanan', $id_layanan);
 
     $layanan = $this->Crud_model->listingOne('tbl_layanan', 'id_layanan', $id_layanan);
 
@@ -99,7 +101,8 @@ class Layanan extends CI_Controller
       'status_perkawinan' => $i->post('status_perkawinan'),
       'kewarganegaraan'   => $i->post('kewarganegaraan'),
       'alamat'            => $i->post('alamat'),
-      'type'              => 'KTP'
+      'type'              => 'KTP',
+      'is_read'         => 1,
     ];
 
 
@@ -137,7 +140,8 @@ class Layanan extends CI_Controller
       'status_perkawinan'   => $i->post('status_perkawinan'),
       'kewarganegaraan'     => $i->post('kewarganegaraan'),
       'alamat'              => $i->post('alamat'),
-      'type'                => 'KK'
+      'type'                => 'KK',
+      'is_read'         => 1,
     ];
     if ($id_layanan == null) {
       $this->Crud_model->add('tbl_layanan', $data);
@@ -172,7 +176,8 @@ class Layanan extends CI_Controller
       'nama_ayah'       => $i->post('nama_ayah'),
       'nama_ibu'        => $i->post('nama_ibu'),
       'alamat'          => $i->post('alamat'),
-      'type'            => 'AK'
+      'type'            => 'AK',
+      'is_read'         => 1,
     ];
     if ($id_layanan == null) {
       $this->Crud_model->add('tbl_layanan', $data);
@@ -216,7 +221,8 @@ class Layanan extends CI_Controller
       'pekerjaan_ibu'   => $i->post('pekerjaan_ibu'),
       'alamat_ibu'      => $i->post('alamat_ibu'),
 
-      'type'            => 'SKTM'
+      'type'            => 'SKTM',
+      'is_read'         => 1,
     ];
 
     if ($id_layanan == null) {
@@ -258,5 +264,12 @@ class Layanan extends CI_Controller
       'content'   => 'admin/layanan/add/add'
     ];
     $this->load->view('admin/layout/wrapper', $data, FALSE);
+  }
+
+  function delete($id_layanan)
+  {
+    $this->Crud_model->delete('tbl_layanan', 'id_layanan', $id_layanan);
+    $this->session->set_flashdata('msg', 'Saran dihapus');
+    redirect('admin/layanan', 'refresh');
   }
 }

@@ -11,6 +11,18 @@
       <!-- <a href="<?= base_url($add) ?>" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah</a> -->
     </p>
 
+
+    <style>
+      .read-data {
+        color: darkgray;
+      }
+
+      .not-read-data {
+        color: #f4c000;
+      }
+    </style>
+
+
     <table class="table DataTable">
       <thead>
         <tr>
@@ -26,7 +38,11 @@
           <tr>
             <td><?= $no ?></td>
             <td>
-              <a href="<?= base_url('admin/layanan/detail/' . $row->id_layanan); ?>"><b><?= $row->namalengkap ?></b></a>
+              <a href="<?= base_url('admin/layanan/detail/' . $row->id_layanan); ?>"><i class="fa <?php if ($row->is_read == '1') {
+                                                                                                    echo 'fa-envelope-open read-data';
+                                                                                                  } else {
+                                                                                                    echo 'fa-envelope not-read-data';
+                                                                                                  } ?>"></i> <b><?= $row->namalengkap ?></b></a>
             </td>
             <td><?= $row->type; ?></td>
             <td>
