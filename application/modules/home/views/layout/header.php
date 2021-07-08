@@ -33,16 +33,28 @@ $uri = $this->uri->segment('2');
         <li class="nav-item <?php if ($this->uri->segment('2') == 'berita') {
                               echo "active";
                             } ?>"><a class="nav-link" href="<?= base_url('home/berita'); ?>"><strong> Berita</strong></a></li>
-        <li class="nav-item <?php if ($this->uri->segment('2') == 'sejarah') {
-                              echo "active";
-                            } ?>"><a class="nav-link" href="<?= base_url('home/sejarah'); ?>"><strong> Sejarah</strong></a></li>
-        <li class="nav-item <?php if ($this->uri->segment('2') == 'visimisi') {
-                              echo "active";
-                            } ?>"><a class="nav-link" href="<?= base_url('home/visimisi'); ?>"><strong> Visi & Misi</strong></a></li>
-
         <li class="nav-item <?php if ($this->uri->segment('2') == 'posyandu') {
                               echo "active";
                             } ?>"><a class="nav-link" href="<?= base_url('home/posyandu'); ?>"><strong> Posyandu</strong></a></li>
+
+        <li class="nav-item <?php if ($this->uri->segment('2') == 'posyandu') {
+                              echo "active";
+                            } ?>"><a class="nav-link" href="<?= base_url('home/penduduk'); ?>"><strong> Penduduk</strong></a></li>
+
+        <li class="dropdown nav-item show">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
+            <strong> Profil</strong>
+            <div class="ripple-container"></div>
+          </a>
+          <div class="dropdown-menu dropdown-with-icons">
+            <a href="<?= base_url('home/sejarah') ?>" class="dropdown-item">
+              Sejarah
+            </a>
+            <a href="<?= base_url('home/visimisi') ?>" class="dropdown-item">
+              Visi Misi </a>
+          </div>
+        </li>
+
 
 
         <li class="dropdown nav-item show">
@@ -70,6 +82,11 @@ $uri = $this->uri->segment('2');
 
       </ul>
     </div>
+
+    <div class="pull-right">
+      <a href="<?= base_url('admin/auth'); ?>" class="btn btn-primary">Login</a>
+    </div>
+
   </div>
 </nav>
 

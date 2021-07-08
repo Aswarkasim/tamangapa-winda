@@ -71,4 +71,14 @@ class Home_model extends CI_Model
       ->like('judul_berita', $key);
     return $this->db->get()->result();
   }
+
+  function listPenduduk($limit, $offset)
+  {
+    $query = $this->db->select('*')
+      ->from('tbl_penduduk')
+      ->limit($limit)
+      ->offset($offset)
+      ->get();
+    return $query->result();
+  }
 }
