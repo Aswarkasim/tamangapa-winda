@@ -17,10 +17,10 @@ class Layanan extends CI_Controller
   }
 
 
-  public function index()
+  public function index($type)
   {
 
-    $layanan = $this->AM->listLayanan();
+    $layanan = $this->AM->listLayanan($type);
 
     $data = [
 

@@ -6,10 +6,11 @@ class Admin_model extends CI_Model
 {
 
 
-  public function listLayanan()
+  public function listLayanan($type)
   {
     $query = $this->db->select('*')
       ->from('tbl_layanan')
+      ->where('type', $type)
       ->order_by('date_created', 'ASC')
       ->get();
     return $query->result();

@@ -23,23 +23,58 @@ $layanan = $this->Crud_model->listingOneAll('tbl_layanan', 'is_read', '0');
                         ?>"><a href="<?php echo base_url('admin/dashboard')
                                         ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 
+            <li class="<?php if ($this->uri->segment(2) == "datapenduduk") {
+                            echo "active";
+                        }
+                        ?>"><a href="<?php echo base_url('admin/datapenduduk')
+                                        ?>"><i class="fa fa-users"></i> <span>Data Penduduk</span>
+                </a></li>
+
             <li class="<?php if ($this->uri->segment(2) == "penduduk") {
                             echo "active";
                         }
                         ?>"><a href="<?php echo base_url('admin/penduduk')
-                                        ?>"><i class="fa fa-users"></i> <span>Penduduk</span>
+                                        ?>"><i class="fa fa-users"></i> <span>Rekap Penduduk</span>
                 </a></li>
 
 
-            <li class="<?php if ($this->uri->segment(2) == "layanan") {
-                            echo "active";
-                        }
-                        ?>"><a href="<?php echo base_url('admin/layanan')
-                                        ?>"><i class="fa fa-file"></i> <span>Layanan Persuratan</span>
+            <!-- <li class="<?php if ($this->uri->segment(2) == "layanan") {
+                                echo "active";
+                            }
+                            ?>"><a href="<?php echo base_url('admin/layanan')
+                                            ?>"><i class="fa fa-file"></i> <span>Layanan Persuratan</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-blue"><?= count($layanan) ?></small>
                     </span>
-                </a></li>
+                </a></li> -->
+
+            <li class="treeview <?php if ($this->uri->segment(2) == "layanan") {
+                                    echo "active";
+                                } ?>">
+                <a href="#"><i class="fa fa-file"></i> <span>Laynan Persuratan</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-blue"><?= count($layanan) ?></small>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="<?php if ($this->uri->segment(4) == "ktp") {
+                                    echo "active";
+                                } ?>"><a href="<?= base_url('admin/layanan/index/ktp') ?>">KTP</a></li>
+                    <li class="<?php if ($this->uri->segment(4) == "kk") {
+                                    echo "active";
+                                } ?>"><a href="<?= base_url('admin/layanan/index/kk') ?>">KK</a></li>
+                    <li class="<?php if ($this->uri->segment(4) == "ak") {
+                                    echo "active";
+                                } ?>"><a href="<?= base_url('admin/layanan/index/ak') ?>">Akta Kelahiran</a></li>
+                    <li class="<?php if ($this->uri->segment(4) == "sktm") {
+                                    echo "active";
+                                } ?>"><a href="<?= base_url('admin/layanan/index/sktm') ?>">SKTM</a></li>
+                </ul>
+            </li>
+
 
 
             <li class="<?php if ($this->uri->segment(2) == "posyandu") {

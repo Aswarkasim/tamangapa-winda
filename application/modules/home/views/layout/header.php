@@ -37,9 +37,19 @@ $uri = $this->uri->segment('2');
                               echo "active";
                             } ?>"><a class="nav-link" href="<?= base_url('home/posyandu'); ?>"><strong> Posyandu</strong></a></li>
 
-        <li class="nav-item <?php if ($this->uri->segment('2') == 'posyandu') {
-                              echo "active";
-                            } ?>"><a class="nav-link" href="<?= base_url('home/penduduk'); ?>"><strong> Penduduk</strong></a></li>
+        <li class="dropdown nav-item show">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
+            <strong> Penduduk</strong>
+            <div class="ripple-container"></div>
+          </a>
+          <div class="dropdown-menu dropdown-with-icons">
+            <a href="<?= base_url('home/penduduk') ?>" class="dropdown-item">
+              Rekap penduduk
+            </a>
+            <a href="<?= base_url('home/penduduk/data') ?>" class="dropdown-item">
+              Data Penduduk </a>
+          </div>
+        </li>
 
         <li class="dropdown nav-item show">
           <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">

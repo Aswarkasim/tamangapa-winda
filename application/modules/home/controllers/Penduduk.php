@@ -34,7 +34,7 @@ class Penduduk extends CI_Controller
 
     $from = $this->uri->segment(4);
     $this->pagination->initialize($config);
-    $penduduk = $this->HM->listPenduduk($config['per_page'], $from);
+    $penduduk = $this->HM->listPenduduk('tbl_penduduk', $config['per_page'], $from);
 
     $data = [
       'penduduk'           => $penduduk,
@@ -42,6 +42,31 @@ class Penduduk extends CI_Controller
       'tombol'   => $tombol,
       'pagination'        => $this->pagination->create_links(),
       'content' => 'home/penduduk/index'
+    ];
+    $this->load->view('home/layout/wrapper', $data, FALSE);
+  }
+
+  public function data()
+  {
+
+    $this->load->model('home/Home_model', 'HM');
+
+
+
+    $this->load->library('pagination');
+
+    $config['base_url']     = base_url('home/penduduk/data/');
+    $config['total_rows']   = count($this->Crud_model->listing('tbl_penduduk'));
+    $config['per_page']     = 15;
+
+    $from = $this->uri->segment(4);
+    $this->pagination->initialize($config);
+    $penduduk = $this->HM->listPenduduk('tbl_datapenduduk', $config['per_page'], $from);
+
+    $data = [
+      'penduduk'           => $penduduk,
+      'pagination'          => $this->pagination->create_links(),
+      'content' => 'home/penduduk/data'
     ];
     $this->load->view('home/layout/wrapper', $data, FALSE);
   }

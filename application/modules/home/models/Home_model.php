@@ -72,10 +72,10 @@ class Home_model extends CI_Model
     return $this->db->get()->result();
   }
 
-  function listPenduduk($limit, $offset)
+  function listPenduduk($table, $limit, $offset)
   {
     $query = $this->db->select('*')
-      ->from('tbl_penduduk')
+      ->from($table)
       ->limit($limit)
       ->offset($offset)
       ->get();
