@@ -16,7 +16,9 @@
             <thead>
               <tr>
                 <th width="40px">No</th>
+                <th>NIK</th>
                 <th>Namalengkap</th>
+                <th>Alamat</th>
               </tr>
             </thead>
             <tbody id="targetData">
@@ -24,7 +26,9 @@
               foreach ($penduduk as $row) { ?>
                 <tr>
                   <td><?= $no ?></td>
+                  <td><?= $row->no_ktp ?></td>
                   <td><?= $row->namalengkap ?></td>
+                  <td><?= $row->alamat ?></td>
 
                 </tr>
               <?php $no++;

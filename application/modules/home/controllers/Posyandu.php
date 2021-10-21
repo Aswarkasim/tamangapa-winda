@@ -28,7 +28,14 @@ class Posyandu extends CI_Controller
 
   function detail($id_posyandu)
   {
+
+    // $date = date('Y-m-d');
     $posyandu = $this->Crud_model->listingOne('tbl_posyandu', 'id_posyandu', $id_posyandu);
+
+    // if ($date > $posyandu->jadwal) {
+    // } else {
+    // }
+
     $kategori = $this->Crud_model->listing('tbl_kategori');
     $berita = $this->Crud_model->listing('tbl_berita', '8');
     $data = [

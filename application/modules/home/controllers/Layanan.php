@@ -30,32 +30,42 @@ class Layanan extends CI_Controller
     $valid->set_rules('kewarganegaraan', 'Kewarganegaraan', 'required', ['required' => $required]);
     $valid->set_rules('alamat', 'Alamat', 'required', ['required' => $required]);
 
+    if ($valid->run()) {
+      if (!empty($_FILES['lampiran']['name'])) {
+        $config['upload_path']   = './assets/uploads/images/';
+        $config['allowed_types'] = 'pdf|jpg|png|svg|jpeg';
+        $config['max_size']      = '24000'; // KB 
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('lampiran')) {
+          $data = [
+            'content'  => 'home/layanan/ktp'
+          ];
+          $this->load->view('home/layout/wrapper', $data, FALSE);
+        } else {
+          $upload_data = ['uploads' => $this->upload->data()];
 
-    if ($valid->run() === FALSE) {
-      $data = [
-        'content'  => 'home/layanan/ktp'
-      ];
-      $this->load->view('home/layout/wrapper', $data, FALSE);
-    } else {
-      $i = $this->input;
-      $data = [
-        'id_layanan'    => random_string(),
-        'namalengkap'   => $i->post('namalengkap'),
-        'tempat_lahir'   => $i->post('tempat_lahir'),
-        'tanggal_lahir'   => $i->post('tanggal_lahir'),
-        'pekerjaan'   => $i->post('pekerjaan'),
-        'jenis_kelamin'   => $i->post('jenis_kelamin'),
-        'agama'   => $i->post('agama'),
-        'status_perkawinan'   => $i->post('status_perkawinan'),
-        'kewarganegaraan'   => $i->post('kewarganegaraan'),
-        'alamat'   => $i->post('alamat'),
-        'type'    => 'KTP'
-      ];
-      $this->Crud_model->add('tbl_layanan', $data);
-      $this->session->set_flashdata('msg', 'Data berhasil dikirim. Silakan ke kantor desa untuk mengambil surat');
-      redirect('home/layanan/ktp');
+          $i = $this->input;
+
+          $data = [
+            'id_layanan'    => random_string(),
+            'namalengkap'   => $i->post('namalengkap'),
+            'tempat_lahir'   => $i->post('tempat_lahir'),
+            'tanggal_lahir'   => $i->post('tanggal_lahir'),
+            'pekerjaan'   => $i->post('pekerjaan'),
+            'jenis_kelamin'   => $i->post('jenis_kelamin'),
+            'agama'   => $i->post('agama'),
+            'status_perkawinan'   => $i->post('status_perkawinan'),
+            'kewarganegaraan'   => $i->post('kewarganegaraan'),
+            'alamat'   => $i->post('alamat'),
+            'type'    => 'KTP',
+            'lampiran'          => $config['upload_path'] . $upload_data['uploads']['file_name']
+          ];
+          $this->Crud_model->add('tbl_layanan', $data);
+          $this->session->set_flashdata('msg', 'Data berhasil dikirim. Silakan ke kantor desa untuk mengambil surat');
+          redirect('home/layanan/ktp');
+        }
+      }
     }
-
     $data = [
       'content'  => 'home/layanan/ktp'
     ];
@@ -78,31 +88,42 @@ class Layanan extends CI_Controller
     $valid->set_rules('alamat', 'Alamat', 'required', ['required' => $required]);
 
 
-    if ($valid->run() === FALSE) {
-      $data = [
-        'content'  => 'home/layanan/kk'
-      ];
-      $this->load->view('home/layout/wrapper', $data, FALSE);
-    } else {
-      $i = $this->input;
-      $data = [
-        'id_layanan'    => random_string(),
-        'namalengkap'   => $i->post('namalengkap'),
-        'tempat_lahir'   => $i->post('tempat_lahir'),
-        'tanggal_lahir'   => $i->post('tanggal_lahir'),
-        'pekerjaan'   => $i->post('pekerjaan'),
-        'jenis_kelamin'   => $i->post('jenis_kelamin'),
-        'agama'   => $i->post('agama'),
-        'status_perkawinan'   => $i->post('status_perkawinan'),
-        'kewarganegaraan'   => $i->post('kewarganegaraan'),
-        'alamat'   => $i->post('alamat'),
-        'type'    => 'KK'
-      ];
-      $this->Crud_model->add('tbl_layanan', $data);
-      $this->session->set_flashdata('msg', 'Data berhasil dikirim. Silakan ke kantor desa untuk mengambil surat');
-      redirect('home/layanan/kk');
-    }
+    if ($valid->run()) {
+      if (!empty($_FILES['lampiran']['name'])) {
+        $config['upload_path']   = './assets/uploads/images/';
+        $config['allowed_types'] = 'pdf|jpg|png|svg|jpeg';
+        $config['max_size']      = '24000'; // KB 
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('lampiran')) {
+          $data = [
+            'content'  => 'home/layanan/kk'
+          ];
+          $this->load->view('home/layout/wrapper', $data, FALSE);
+        } else {
+          $upload_data = ['uploads' => $this->upload->data()];
 
+          $i = $this->input;
+
+          $data = [
+            'id_layanan'    => random_string(),
+            'namalengkap'   => $i->post('namalengkap'),
+            'tempat_lahir'   => $i->post('tempat_lahir'),
+            'tanggal_lahir'   => $i->post('tanggal_lahir'),
+            'pekerjaan'   => $i->post('pekerjaan'),
+            'jenis_kelamin'   => $i->post('jenis_kelamin'),
+            'agama'   => $i->post('agama'),
+            'status_perkawinan'   => $i->post('status_perkawinan'),
+            'kewarganegaraan'   => $i->post('kewarganegaraan'),
+            'alamat'   => $i->post('alamat'),
+            'type'    => 'KK',
+            'lampiran'          => $config['upload_path'] . $upload_data['uploads']['file_name']
+          ];
+          $this->Crud_model->add('tbl_layanan', $data);
+          $this->session->set_flashdata('msg', 'Data berhasil dikirim. Silakan ke kantor desa untuk mengambil surat');
+          redirect('home/layanan/kk');
+        }
+      }
+    }
     $data = [
       'content'  => 'home/layanan/kk'
     ];
@@ -125,32 +146,42 @@ class Layanan extends CI_Controller
     $valid->set_rules('nama_ibu', 'Nama Ibu', 'required', ['required' => $required]);
     $valid->set_rules('alamat', 'Alamat', 'required', ['required' => $required]);
 
+    if ($valid->run()) {
+      if (!empty($_FILES['lampiran']['name'])) {
+        $config['upload_path']   = './assets/uploads/images/';
+        $config['allowed_types'] = 'pdf|jpg|png|svg|jpeg';
+        $config['max_size']      = '24000'; // KB 
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('lampiran')) {
+          $data = [
+            'content'  => 'home/layanan/ak'
+          ];
+          $this->load->view('home/layout/wrapper', $data, FALSE);
+        } else {
+          $upload_data = ['uploads' => $this->upload->data()];
 
-    if ($valid->run() === FALSE) {
-      $data = [
-        'content'  => 'home/layanan/ak'
-      ];
-      $this->load->view('home/layout/wrapper', $data, FALSE);
-    } else {
-      $i = $this->input;
-      $data = [
-        'id_layanan'    => random_string(),
-        'namalengkap'   => $i->post('namalengkap'),
-        'tempat_lahir'   => $i->post('tempat_lahir'),
-        'tanggal_lahir'   => $i->post('tanggal_lahir'),
-        'pekerjaan'   => $i->post('pekerjaan'),
-        'jenis_kelamin'   => $i->post('jenis_kelamin'),
-        'anak_ke'   => $i->post('anak_ke'),
-        'nama_ayah'   => $i->post('nama_ayah'),
-        'nama_ibu'   => $i->post('nama_ibu'),
-        'alamat'   => $i->post('alamat'),
-        'type'    => 'AK'
-      ];
-      $this->Crud_model->add('tbl_layanan', $data);
-      $this->session->set_flashdata('msg', 'Data berhasil dikirim. Silakan ke kantor desa untuk mengambil surat');
-      redirect('home/layanan/ak');
+          $i = $this->input;
+
+          $data = [
+            'id_layanan'    => random_string(),
+            'namalengkap'   => $i->post('namalengkap'),
+            'tempat_lahir'   => $i->post('tempat_lahir'),
+            'tanggal_lahir'   => $i->post('tanggal_lahir'),
+            'pekerjaan'   => $i->post('pekerjaan'),
+            'jenis_kelamin'   => $i->post('jenis_kelamin'),
+            'anak_ke'   => $i->post('anak_ke'),
+            'nama_ayah'   => $i->post('nama_ayah'),
+            'nama_ibu'   => $i->post('nama_ibu'),
+            'alamat'   => $i->post('alamat'),
+            'type'    => 'AK',
+            'lampiran'          => $config['upload_path'] . $upload_data['uploads']['file_name']
+          ];
+          $this->Crud_model->add('tbl_layanan', $data);
+          $this->session->set_flashdata('msg', 'Data berhasil dikirim. Silakan ke kantor desa untuk mengambil surat');
+          redirect('home/layanan/ak');
+        }
+      }
     }
-
     $data = [
       'content'  => 'home/layanan/ak'
     ];

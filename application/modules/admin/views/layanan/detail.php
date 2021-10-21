@@ -46,6 +46,12 @@
           break;
       }
       ?>
+
+      <tr>
+        <td><b>Lampiran Surat RT/RW</b></td>
+        <td>: <b><a href="<?= base_url('admin/layanan/download/' . $layanan->id_layanan); ?>"><i class="fa fa-download"></i> Lampiran</a></td>
+      </tr>
+
     </div>
     <!-- /.box-body -->
 

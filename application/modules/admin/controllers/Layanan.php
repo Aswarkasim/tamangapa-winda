@@ -272,4 +272,11 @@ class Layanan extends CI_Controller
     $this->session->set_flashdata('msg', 'Saran dihapus');
     redirect('admin/layanan', 'refresh');
   }
+
+  function download($id_layanan)
+  {
+    $layanan = $this->Crud_model->listingOne('tbl_layanan', 'id_layanan', $id_layanan);
+    $this->load->helper('download');
+    force_download($layanan->lampiran, null);
+  }
 }

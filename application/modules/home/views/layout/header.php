@@ -3,7 +3,7 @@ $konfigurasi = $this->Crud_model->listingOne('tbl_konfigurasi', 'id_konfigurasi'
 $uri = $this->uri->segment('2');
 ?>
 
-<div class="flash-data" data-flashdata="<?= $this->session->flashdata('msg') ?>"></div>
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('msgA') ?>"></div>
 <div class="gagal" data-flashdata="<?= $this->session->flashdata('msg_er') ?>"></div>
 
 

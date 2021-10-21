@@ -9,7 +9,7 @@
 
     <div class="card-body">
       <?php echo validation_errors('<div class="text-danger">', '</div>'); ?>
-      <form action="<?= base_url('home/layanan/kk') ?>" method="POST">
+      <form action="<?= base_url('home/layanan/kk') ?>" method="POST" enctype="multipart/form-data">
         <div class="row">
 
           <div class="col-md-6">
@@ -69,6 +69,12 @@
               <label class="bmd-label-floating">Alamat</label>
               <input type="text" name="alamat" value="<?= set_value('alamat') ?>" class="form-control">
             </div>
+
+            <div class="">
+              <label class="bmd-label-floating">Surat RT/RW</label><br>
+              <input type="file" name="lampiran" value="<?= set_value('lampiran') ?>">
+            </div>
+
           </div>
         </div>
 

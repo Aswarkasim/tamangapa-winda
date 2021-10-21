@@ -11,15 +11,21 @@
       <ul class="list-unstyled">
 
         <div class="row">
-          <?php foreach ($posyandu as $row) { ?>
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-body">
-                  <a href="<?= base_url('home/posyandu/detail/' . $row->id_posyandu) ?>"><b><?= format_indo($row->jadwal) ?></b></a>
+          <?php
+          $date = date('Y-m-d');
+          foreach ($posyandu as $row) {
+
+            if ($date < $row->jadwal) {
+          ?>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <a href="<?= base_url('home/posyandu/detail/' . $row->id_posyandu) ?>"><b><?= format_indo($row->jadwal) ?></b></a>
+                  </div>
                 </div>
               </div>
-            </div>
-          <?php } ?>
+          <?php }
+          }  ?>
         </div>
 
       </ul>

@@ -11,7 +11,7 @@
 
       <?php echo validation_errors('<div class="text-danger">', '</div>'); ?>
 
-      <form action="<?= base_url('home/layanan/ak') ?>" method="POST">
+      <form action="<?= base_url('home/layanan/ak') ?>" method="POST" enctype="multipart/form-data">
         <div class="row">
 
           <div class="col-md-6">
@@ -69,6 +69,11 @@
             <div class="form-group bmd-form-group">
               <label class="bmd-label-floating">Nama Ibu Kandung</label>
               <input type="text" name="nama_ibu" value="<?= set_value('nama_ibu') ?>" class="form-control">
+            </div>
+
+            <div class="">
+              <label class="bmd-label-floating">Surat RT/RW</label><br>
+              <input type="file" name="lampiran" value="<?= set_value('lampiran') ?>">
             </div>
 
 
